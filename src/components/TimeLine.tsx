@@ -12,7 +12,7 @@ export const TimeLine = observer(() => {
   const percentOfCurrentTime = (store.currentTimeInMs / store.maxTime) * 100;
   const [isDragging, setIsDragging] = useState<boolean>(false);
 
-  const handleFileChange = (file: File, index: string) => {
+  const handleFileChange = (file: File, index: number) => {
     const newVideoElement = createVideoElement(file, index);
     console.log("newVideoElement", newVideoElement)
     store.addEditorElement(newVideoElement);
@@ -45,7 +45,7 @@ export const TimeLine = observer(() => {
     });
   };
 
-  const createVideoElement = (file: File, index: string): VideoEditorElement | undefined => {
+  const createVideoElement = (file: File, index: number): VideoEditorElement => {
     const src = URL.createObjectURL(file);
     const id = getUid();
   
